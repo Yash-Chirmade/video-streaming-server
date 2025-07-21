@@ -37,6 +37,11 @@ type Config struct {
 	JWTSecretKey           string
 	FileSizeLimit          string
 	Debug                  bool
+
+	SMTPHost     string
+	SMTPPort     string
+	SMTPPassword string
+	SMTPUser     string
 }
 
 var AppConfig *Config
@@ -103,6 +108,11 @@ func LoadConfig(envFile string) error {
 		JWTSecretKey:           os.Getenv("JWT_SECRET_KEY"),
 		FileSizeLimit:          os.Getenv("FILE_SIZE_LIMIT"),
 		Debug:                  debug,
+
+		SMTPHost:     os.Getenv("SMTPHost"),
+		SMTPPort:     os.Getenv("SMTPPort"),
+		SMTPPassword: os.Getenv("SMTPPassword"),
+		SMTPUser:     os.Getenv("SMTPUser"),
 	}
 
 	if config.JWTSecretKey == "" {
